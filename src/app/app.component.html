@@ -1,0 +1,108 @@
+
+<div class="wrapper">
+  <h2> Eventzilla Checkout API Sample Application </h2>
+<p>This sample application demonstrates the usage of API v2 to create a transaction for an event</p>
+<p></p>
+<hr />
+<br>
+<h4>Step 1: Prepare for a transaction </h4>
+  <p>You will need the "eventid" and "eventdateid" attributes to initiate a checkout. You can get these from a method such as /api/v2/events. Following sample inputs will be used in this example (eventid: 2138719424, eventdateid: 2138453919).</p>
+
+<a href ="#prepare" (click)= "onprepareorder()" class="btn btn-primary">[GET] Prepare(api/v2/checkout/prepare)</a>
+
+<br />
+
+<div id ="prepare" class ="container">
+   <div class="fixed">
+<div *ngIf="divprepare">
+  <h4 ><i>Request: </i></h4>
+  <pre><code>{{this.prepareinput|json}} </code> </pre>
+
+  </div>
+  </div>
+   <div  *ngIf="divprepare" class="flex-item">
+  <h4><i>Response:</i></h4>
+  
+ <pre><code> {{this.events|json}}</code> </pre>
+
+</div>
+</div>
+</div>
+
+ <hr/>
+ <br />
+
+
+<div class="wrapper" id ="create" *ngIf="divcreate" > 
+
+<br /><br />
+<h4>Step 2: Create a transaction </h4>
+<p>POST values from the previous step's result object. The "tickettypes" object represents each registration spot or seat included in this transaction</p>
+
+<a href ="#create" (click)= "oncreateorder()" class="btn btn-primary" >
+  [POST] Create(api/v2/checkout/create)</a>
+<br>
+<br>
+<!-- <p>In this api call, From the response of prepare api, passing a tickettypeid into  createmethod</p> -->
+<br> 
+
+
+<div class ="container" *ngIf="divcreateresponse">
+  <div class ="fixed">
+   <h4 ><i>Request: </i></h4>
+  <pre ><code>{{this.datas|json}} </code> </pre>
+</div>
+<div class ="flex-item">
+    <h4><i>Response: </i></h4>
+ <pre><code> {{this.createorderresponse|json}}
+
+   </code></pre>
+   </div>  
+   </div>    
+   <br>
+   
+   <hr/>
+   <br>
+
+ 
+
+
+
+<div *ngIf="divfillorder">
+  
+<h4>Step 3: Fill the transaction with registration details</h4>
+<p>POST values from the previous step's result object. You will have to use the "checkout_id" property to populate this transaction and use the "tickets" object to populate the registration details including answers to your custom questions.</p>
+<a href="#fillorder" (click)= "onfillorder()" class="btn btn-primary"  >[POST] fillorder(api/v2/checkout/fillorder)</a>
+
+<div id="fillorder" class = "container"  *ngIf="divfillorderresponse" >
+  <div class ="fixed">
+  <h4><i>Request:</i></h4>
+  <pre><code>{{this.fill|json}}</code></pre>
+  </div>
+  <div class= "flex-item">
+  <h4><i>Response:</i></h4>
+  <pre><code>{{this.fillorderresponse|json}}</code></pre>
+</div>
+</div>
+<br>
+<br>
+<hr/>
+
+<div  *ngIf="divconfirm" >
+  <h4>Step 4: Confirm the transaction</h4>
+  <p>POST values from the previous step's result object.</p>
+ 
+<a href ="#confirm" (click)= "onconfirmorder()" class="btn btn-primary">[POST] confirm(api/v2/checkout/confirm)</a>
+
+<div id ="confirm" class = "container"  *ngIf="divconfirmresponse" >
+ <div class ="fixed">
+  <h4><i>Request:</i></h4>
+   <pre><code>{{this.confirm|json}} </code> </pre>
+ </div>
+ <div class ="flex-item">
+  <h4><i>Response:</i></h4>
+<pre><code>{{this.confirmorderresponse|json}} </code> </pre>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,31 @@
+p {
+  font-family: Lato;
+}
+
+.wrapper{ 
+  padding: 5px 15px;
+}
+
+.ScrollStyle
+{
+    max-height: 350px;
+    max-width: 490px;
+    overflow-y: scroll;
+}
+.container{
+    display: flex;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-top: 15px;
+}
+.fixed{
+    width: 45%;
+    margin-right: 40px;
+    margin-left:10px;
+     display: center;
+}
+.flex-item{
+    flex-grow: 1;
+    display: center;
+     margin-right: 40px;
+}
