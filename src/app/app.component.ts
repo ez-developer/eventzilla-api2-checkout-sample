@@ -132,7 +132,9 @@ this.load.checkoutcreate(this.datas).subscribe(Response =>{
         "eventid":this.eventid,
     "eventdateid":this.eventdateid,
     "checkout_id":this.checkout_id,
-    "payment_status":"success"
+    "payment_status":"success",
+    "comments": "Organizer transaction comments / notes",
+    "sendemail":false
      }
 
     
